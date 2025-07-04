@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="NUr2Hu" name="simpleMBCompressor" projectType="audioplug"
+              useAppConfig="0" addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1"
+              companyName="Rich Kim" pluginFormats="buildAU,buildVST3" pluginAAXCategory="0">
+  <MAINGROUP id="et89Si" name="simpleMBCompressor">
+    <GROUP id="{509A58D2-1BD6-8695-7020-BB7CD29B31F8}" name="Source">
+      <GROUP id="{CC24361E-4D68-E490-3781-E9BF33CF4AC4}" name="GUI">
+        <FILE id="yeWfv6" name="AnalyzerPathGenerator.h" compile="0" resource="0"
+              file="Source/GUI/AnalyzerPathGenerator.h"/>
+        <FILE id="Qju0m4" name="CompressorBandControls.cpp" compile="1" resource="0"
+              file="Source/GUI/CompressorBandControls.cpp"/>
+        <FILE id="YIr1wM" name="CompressorBandControls.h" compile="0" resource="0"
+              file="Source/GUI/CompressorBandControls.h"/>
+        <FILE id="YftTv6" name="CustomButtons.cpp" compile="1" resource="0"
+              file="Source/GUI/CustomButtons.cpp"/>
+        <FILE id="nrJ5Bc" name="CustomButtons.h" compile="0" resource="0" file="Source/GUI/CustomButtons.h"/>
+        <FILE id="JM4Duo" name="FFTDataGenerator.h" compile="0" resource="0"
+              file="Source/GUI/FFTDataGenerator.h"/>
+        <FILE id="OMi61W" name="GlobalControls.cpp" compile="1" resource="0"
+              file="Source/GUI/GlobalControls.cpp"/>
+        <FILE id="ABTXMH" name="GlobalControls.h" compile="0" resource="0"
+              file="Source/GUI/GlobalControls.h"/>
+        <FILE id="TDOmBB" name="KneeGraph.cpp" compile="1" resource="0" file="Source/GUI/KneeGraph.cpp"/>
+        <FILE id="bnGSoa" name="KneeGraph.h" compile="0" resource="0" file="Source/GUI/KneeGraph.h"/>
+        <FILE id="fvV7uM" name="LookAndFeel.cpp" compile="1" resource="0" file="Source/GUI/LookAndFeel.cpp"/>
+        <FILE id="h0wwjB" name="LookAndFeel.h" compile="0" resource="0" file="Source/GUI/LookAndFeel.h"/>
+        <FILE id="xFAtUC" name="PathProducer.cpp" compile="1" resource="0"
+              file="Source/GUI/PathProducer.cpp"/>
+        <FILE id="kFWLOp" name="PathProducer.h" compile="0" resource="0" file="Source/GUI/PathProducer.h"/>
+        <FILE id="LvjFbH" name="RotarySliderWithLabels.cpp" compile="1" resource="0"
+              file="Source/GUI/RotarySliderWithLabels.cpp"/>
+        <FILE id="mmZUIN" name="RotarySliderWithLabels.h" compile="0" resource="0"
+              file="Source/GUI/RotarySliderWithLabels.h"/>
+        <FILE id="LOwTrY" name="SpectrumAnalyzer.cpp" compile="1" resource="0"
+              file="Source/GUI/SpectrumAnalyzer.cpp"/>
+        <FILE id="ONnBug" name="SpectrumAnalyzer.h" compile="0" resource="0"
+              file="Source/GUI/SpectrumAnalyzer.h"/>
+        <FILE id="ELwLyX" name="Utilities.cpp" compile="1" resource="0" file="Source/GUI/Utilities.cpp"/>
+        <FILE id="kJTcLw" name="Utilities.h" compile="0" resource="0" file="Source/GUI/Utilities.h"/>
+        <FILE id="sblC41" name="UtilityComponents.cpp" compile="1" resource="0"
+              file="Source/GUI/UtilityComponents.cpp"/>
+        <FILE id="BVp3li" name="UtilityComponents.h" compile="0" resource="0"
+              file="Source/GUI/UtilityComponents.h"/>
+      </GROUP>
+      <GROUP id="{661988BB-4C66-B5FF-3F55-54E9B9120F68}" name="DSP">
+        <FILE id="UWAPAr" name="CompressorBand.cpp" compile="1" resource="0"
+              file="Source/DSP/CompressorBand.cpp"/>
+        <FILE id="xHJ24J" name="CompressorBand.h" compile="0" resource="0"
+              file="Source/DSP/CompressorBand.h"/>
+        <FILE id="LoS8Ex" name="Fifo.h" compile="0" resource="0" file="Source/DSP/Fifo.h"/>
+        <FILE id="LVUdvA" name="Params.cpp" compile="1" resource="0" file="Source/DSP/Params.cpp"/>
+        <FILE id="Z9ZDxO" name="Params.h" compile="0" resource="0" file="Source/DSP/Params.h"/>
+        <FILE id="o7YYns" name="SingleChannelSampleFifo.h" compile="0" resource="0"
+              file="Source/DSP/SingleChannelSampleFifo.h"/>
+      </GROUP>
+      <FILE id="qk0NoZ" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="TVsgxv" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="Xg2Eve" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="fVqw0Q" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_dsp" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="simpleMBCompressor"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="simpleMBCompressor"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_dsp" path="../JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+  </EXPORTFORMATS>
+</JUCERPROJECT>
