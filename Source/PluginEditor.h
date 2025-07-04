@@ -51,10 +51,6 @@ private:
   ControlBar controlBar;
   GlobalControls globalControls{audioProcessor.apvts};
   CompressorBandControls bandControls{audioProcessor.apvts};
-
-//  CompressorBandControls lowBandControls{audioProcessor.apvts, audioProcessor.lowBandComp};
-//  CompressorBandControls midBandControls{audioProcessor.apvts, audioProcessor.midBandComp};
-//  CompressorBandControls highBandControls{audioProcessor.apvts, audioProcessor.highBandComp};
     
   SimpleMBComp::SpectrumAnalyzer analyzer{audioProcessor, audioProcessor.leftChannelFifo, audioProcessor.rightChannelFifo};
   std::unique_ptr<SimpleMBComp::MBCompAnalyzerOverlay> overlay;

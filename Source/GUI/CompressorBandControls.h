@@ -26,14 +26,18 @@ struct CompressorBandControls : juce::Component, juce::Button::Listener
   void buttonClicked(juce::Button *button) override;
 
   void toggleAllBands(bool shouldBeBypassed);
+    
+  void updateKneeGraphParams();
+    
+  void updateKneeGraph(float inputLevelDb);
 
 private:
   juce::AudioProcessorValueTreeState &apvts;
 
   RotarySliderWithLabels attackSlider, releaseSlider, thresholdSlider;
   RatioSlider ratioSlider;
-//  CompressorBand& compressorBand;
-//  KneeGraph kneeGraph;
+
+  KneeGraph kneeGraph;
 
   using Attachment = juce::AudioProcessorValueTreeState::SliderAttachment;
   std::unique_ptr<Attachment> attackSliderAttachment,

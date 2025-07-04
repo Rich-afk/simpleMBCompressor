@@ -158,6 +158,22 @@ void SimpleMBCompAudioProcessorEditor::timerCallback()
         audioProcessor.highBandComp.getRMSOutputLevelDb()};
 
     overlay->update(values);
+    
+    float currentInputLevel = 0.0f;
+    if (bandControls.lowBand.getToggleState())
+    {
+        currentInputLevel = audioProcessor.lowBandComp.getRMSInputLevelDb();
+    }
+    else if (bandControls.midBand.getToggleState())
+    {
+        currentInputLevel = audioProcessor.midBandComp.getRMSInputLevelDb();
+    }
+    else if (bandControls.highBand.getToggleState())
+    {
+        currentInputLevel = audioProcessor.highBandComp.getRMSInputLevelDb();
+    }
+        
+        bandControls.updateKneeGraph(currentInputLevel);
 
     updateGlobalBypassButton();
 }

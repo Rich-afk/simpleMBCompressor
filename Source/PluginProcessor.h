@@ -75,6 +75,10 @@ public:
     juce::AudioParameterFloat *lowThresholdParam{nullptr};
     juce::AudioParameterFloat *midThresholdParam{nullptr};
     juce::AudioParameterFloat *highThresholdParam{nullptr};
+    
+    CompressorBand& getLowBandComp() { return lowBandComp; }
+    CompressorBand& getMidBandComp() { return midBandComp; }
+    CompressorBand& getHighBandComp() { return highBandComp; }
 
 private:
     using Filter = juce::dsp::LinkwitzRileyFilter<float>;

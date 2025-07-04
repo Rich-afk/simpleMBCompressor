@@ -14,6 +14,7 @@ CompressorBandControls::CompressorBandControls(juce::AudioProcessorValueTreeStat
     addAndMakeVisible(releaseSlider);
     addAndMakeVisible(thresholdSlider);
     addAndMakeVisible(ratioSlider);
+    addAndMakeVisible(kneeGraph);
 
     bypassButton.addListener(this);
     soloButton.addListener(this);
@@ -97,6 +98,9 @@ void CompressorBandControls::resized()
 {
     auto bounds = getLocalBounds().reduced(5);
     using namespace juce;
+    
+    auto kneeGraphArea = bounds.removeFromRight(200);
+    kneeGraph.setBounds(kneeGraphArea);
 
     auto createBandButtonControlBox = [](std::vector<Component *> comps)
     {
@@ -144,7 +148,22 @@ void CompressorBandControls::resized()
     flexBox.items.add(FlexItem(bandButtonControlBox).withWidth(30));
 
     flexBox.performLayout(bounds);
+    
+    updateKneeGraphParams();
 }
+
+void CompressorBandControls::updateKneeGraphParams() {
+    float threshold = thresholdSlider.getValue();
+    float ratio = ratioSlider.getValue();
+        
+    kneeGraph.updateParams(threshold, ratio, 0.0f);
+}
+
+void CompressorBandControls::updateKneeGraph(float inputLevelDb)
+{
+    kneeGraph.setInputLevel(inputLevelDb);
+}
+
 
 void CompressorBandControls::paint(juce::Graphics &g)
 {
@@ -402,4 +421,8 @@ void CompressorBandControls::updateAttachments()
     makeAttachmentHelper(bypassButtonAttachment, names[Pos::Bypass], bypassButton);
     makeAttachmentHelper(soloButtonAttachment, names[Pos::Solo], soloButton);
     makeAttachmentHelper(muteButtonAttachment, names[Pos::Mute], muteButton);
+    
+    updateKneeGraphParams();
+    thresholdSlider.onValueChange = [this]() { updateKneeGraphParams(); };
+    ratioSlider.onValueChange = [this]() { updateKneeGraphParams(); };
 }
