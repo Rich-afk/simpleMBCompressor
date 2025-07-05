@@ -3,6 +3,8 @@ This project follows the [tutorial]([https://link-url-here.org](https://www.yout
 TODO:
 Clear Version Control Check for AU
 
+Refactor depreciated getStringWidth()
+
 Add Knee to Compressor
 
 Add more bands!
