@@ -10,6 +10,8 @@
 #include "LookAndFeel.h"
 #include "Utilities.h"
 
+using namespace juce;
+
 KneeGraph::KneeGraph()
 {
     startTimerHz(30); // 30 FPS update rate
@@ -22,7 +24,6 @@ KneeGraph::~KneeGraph()
 
 void KneeGraph::paint(juce::Graphics& g)
 {
-    using namespace juce;
     
     auto bounds = getLocalBounds().toFloat();
     auto graphBounds = bounds.reduced(20.0f); // Leave margin for labels
@@ -62,19 +63,18 @@ void KneeGraph::timerCallback()
 void KneeGraph::updateParams(float threshold, float ratio, float knee)
 {
     thresholdDb = threshold;
-    this->ratio = ratio;
-    kneeWidth = knee;
+    this->ratio = jmax(1.0f, ratio);
+    kneeWidth = jlimit(0.0f, 20.0f, knee);
     repaint();
 }
 
 void KneeGraph::setInputLevel(float inputLevelDb)
 {
-    currentInputLevel = inputLevelDb;
+    currentInputLevel = juce::jlimit(minDb - 10.0f, maxDb + 10.0f, inputLevelDb);
 }
 
 void KneeGraph::drawGrid(juce::Graphics& g, juce::Rectangle<float> bounds)
 {
-    using namespace juce;
     
     if (bounds.getWidth() <= 0 || bounds.getHeight() <= 0)
         return;
@@ -128,7 +128,6 @@ void KneeGraph::drawGrid(juce::Graphics& g, juce::Rectangle<float> bounds)
 
 void KneeGraph::drawCurve(juce::Graphics& g, juce::Rectangle<float> bounds)
 {
-    using namespace juce;
     
     if (bounds.getWidth() <= 0 || bounds.getHeight() <= 0)
         return;
@@ -175,7 +174,6 @@ void KneeGraph::drawCurve(juce::Graphics& g, juce::Rectangle<float> bounds)
 
 void KneeGraph::drawInputLevel(juce::Graphics& g, juce::Rectangle<float> bounds)
 {
-    using namespace juce;
     
     if (currentInputLevel >= minDb && currentInputLevel <= maxDb)
     {
@@ -206,7 +204,6 @@ void KneeGraph::drawInputLevel(juce::Graphics& g, juce::Rectangle<float> bounds)
 
 void KneeGraph::drawLabels(juce::Graphics& g, juce::Rectangle<float> bounds)
 {
-    using namespace juce;
     
     g.setColour(ColorScheme::getSliderBorderColor());
     g.setFont(10.0f);
@@ -234,7 +231,6 @@ void KneeGraph::drawLabels(juce::Graphics& g, juce::Rectangle<float> bounds)
 
 juce::Point<float> KneeGraph::dbToPoint(float inputDb, float outputDb, juce::Rectangle<float> bounds)
 {
-    using namespace juce;
     
     float x = jmap(inputDb, minDb, maxDb, bounds.getX(), bounds.getRight());
     float y = jmap(outputDb, maxDb, minDb, bounds.getY(), bounds.getBottom());
@@ -260,7 +256,6 @@ float KneeGraph::applyCompression(float inputDb)
 
 juce::Path KneeGraph::createCompressionCurve()
 {
-    using namespace juce;
     
     Path curve;
     bool firstPoint = true;

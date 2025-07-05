@@ -536,15 +536,6 @@ juce::AudioProcessorValueTreeState::ParameterLayout SimpleMBCompAudioProcessor::
     return layout;
 }
 
-int SimpleMBCompAudioProcessor::getVersionNumber() const
-{
-    return 0x10000; // Version 1.0.0 in hex (major << 16 | minor << 8 | patch)
-}
-
-const juce::String SimpleMBCompAudioProcessor::getVersionText() const
-{
-    return "1.0.0";
-}
 //==============================================================================
 // This creates new instances of the plugin..
 juce::AudioProcessor *JUCE_CALLTYPE createPluginFilter()
