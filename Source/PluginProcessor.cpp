@@ -435,6 +435,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout SimpleMBCompAudioProcessor::
                                                      params.at(Names::Threshold_Low_Band),
                                                      thresholdRange,
                                                      0));
+//    thresholdRange->versionHint = 1;
     layout.add(std::make_unique<AudioParameterFloat>(params.at(Names::Threshold_Mid_Band),
                                                      params.at(Names::Threshold_Mid_Band),
                                                      thresholdRange,
@@ -533,6 +534,16 @@ juce::AudioProcessorValueTreeState::ParameterLayout SimpleMBCompAudioProcessor::
                                                      2000));
 
     return layout;
+}
+
+int SimpleMBCompAudioProcessor::getVersionNumber() const
+{
+    return 0x10000; // Version 1.0.0 in hex (major << 16 | minor << 8 | patch)
+}
+
+const juce::String SimpleMBCompAudioProcessor::getVersionText() const
+{
+    return "1.0.0";
 }
 //==============================================================================
 // This creates new instances of the plugin..

@@ -76,6 +76,9 @@ void KneeGraph::drawGrid(juce::Graphics& g, juce::Rectangle<float> bounds)
 {
     using namespace juce;
     
+    if (bounds.getWidth() <= 0 || bounds.getHeight() <= 0)
+        return;
+    
     g.setColour(ColorScheme::getModuleBorderColor().withAlpha(0.3f));
     
     // Vertical grid lines (input levels)
@@ -83,15 +86,18 @@ void KneeGraph::drawGrid(juce::Graphics& g, juce::Rectangle<float> bounds)
     {
         float x = jmap(db, minDb, maxDb, bounds.getX(), bounds.getRight());
         
-        if (fmod(db, majorGridDb) == 0.0f)
+        if (x >= bounds.getX() && x <= bounds.getRight())
         {
-            g.setColour(ColorScheme::getModuleBorderColor().withAlpha(0.5f));
-            g.drawVerticalLine(roundToInt(x), bounds.getY(), bounds.getBottom());
-        }
-        else
-        {
-            g.setColour(ColorScheme::getModuleBorderColor().withAlpha(0.2f));
-            g.drawVerticalLine(roundToInt(x), bounds.getY(), bounds.getBottom());
+            if (fmod(db, majorGridDb) == 0.0f)
+            {
+                g.setColour(ColorScheme::getModuleBorderColor().withAlpha(0.5f));
+                g.drawVerticalLine(roundToInt(x), bounds.getY(), bounds.getBottom());
+            }
+            else
+            {
+                g.setColour(ColorScheme::getModuleBorderColor().withAlpha(0.2f));
+                g.drawVerticalLine(roundToInt(x), bounds.getY(), bounds.getBottom());
+            }
         }
     }
     
@@ -100,15 +106,18 @@ void KneeGraph::drawGrid(juce::Graphics& g, juce::Rectangle<float> bounds)
     {
         float y = jmap(db, maxDb, minDb, bounds.getY(), bounds.getBottom());
         
-        if (fmod(db, majorGridDb) == 0.0f)
+        if (y >= bounds.getY() && y <= bounds.getBottom())
         {
-            g.setColour(ColorScheme::getModuleBorderColor().withAlpha(0.5f));
-            g.drawHorizontalLine(roundToInt(y), bounds.getX(), bounds.getRight());
-        }
-        else
-        {
-            g.setColour(ColorScheme::getModuleBorderColor().withAlpha(0.2f));
-            g.drawHorizontalLine(roundToInt(y), bounds.getX(), bounds.getRight());
+            if (fmod(db, majorGridDb) == 0.0f)
+            {
+                g.setColour(ColorScheme::getModuleBorderColor().withAlpha(0.5f));
+                g.drawHorizontalLine(roundToInt(y), bounds.getX(), bounds.getRight());
+            }
+            else
+            {
+                g.setColour(ColorScheme::getModuleBorderColor().withAlpha(0.2f));
+                g.drawHorizontalLine(roundToInt(y), bounds.getX(), bounds.getRight());
+            }
         }
     }
     
@@ -121,6 +130,9 @@ void KneeGraph::drawCurve(juce::Graphics& g, juce::Rectangle<float> bounds)
 {
     using namespace juce;
     
+    if (bounds.getWidth() <= 0 || bounds.getHeight() <= 0)
+        return;
+    
     Path curve;
     bool firstPoint = true;
     
@@ -130,14 +142,17 @@ void KneeGraph::drawCurve(juce::Graphics& g, juce::Rectangle<float> bounds)
         float outputDb = applyCompression(inputDb);
         auto point = dbToPoint(inputDb, outputDb, bounds);
         
-        if (firstPoint)
+        if (std::isfinite(point.x) && std::isfinite(point.y))
         {
-            curve.startNewSubPath(point);
-            firstPoint = false;
-        }
-        else
-        {
-            curve.lineTo(point);
+            if (firstPoint)
+            {
+                curve.startNewSubPath(point);
+                firstPoint = false;
+            }
+            else
+            {
+                curve.lineTo(point);
+            }
         }
     }
     

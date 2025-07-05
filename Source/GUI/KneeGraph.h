@@ -43,6 +43,8 @@ private:
     void drawCurve(juce::Graphics& g, juce::Rectangle<float> bounds);
     void drawInputLevel(juce::Graphics& g, juce::Rectangle<float> bounds);
     void drawLabels(juce::Graphics& g, juce::Rectangle<float> bounds);
+    float safeJmap(float value, float sourceMin, float sourceMax, float targetMin, float targetMax);
+    juce::Rectangle<float> safeRectangle(float x, float y, float width, float height);
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(KneeGraph)
 };

@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="NUr2Hu" name="simpleMBCompressor" projectType="audioplug"
               useAppConfig="0" addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1"
-              companyName="Rich Kim" pluginFormats="buildAU,buildVST3" pluginAAXCategory="0">
+              companyName="Rich Kim" pluginFormats="buildVST3" pluginAAXCategory="0">
   <MAINGROUP id="et89Si" name="simpleMBCompressor">
     <GROUP id="{509A58D2-1BD6-8695-7020-BB7CD29B31F8}" name="Source">
       <GROUP id="{CC24361E-4D68-E490-3781-E9BF33CF4AC4}" name="GUI">
