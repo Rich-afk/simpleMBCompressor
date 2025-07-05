@@ -6,3 +6,5 @@ Clear Version Control Check for AU
 Add Knee to Compressor
 
 Add more bands!
+
+Please ignore the Library Source Code when importing
